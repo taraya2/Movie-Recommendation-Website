@@ -40,6 +40,9 @@ public class MovieController {
         return movieRepo.findByGenresIgnoreCaseOrderByRatingDesc(genre);
     }
 
-
-
+    // Get /api/movies/director?=Mark Robert
+    @GetMapping("/director")
+    public List<Movie> getNoviesByDirector(@RequestParam String director) {
+        return movieRepo.findByDirectorIgnoreCase(director);
+    }
 }

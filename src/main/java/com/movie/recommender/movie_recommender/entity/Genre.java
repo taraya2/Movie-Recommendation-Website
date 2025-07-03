@@ -1,6 +1,8 @@
 package com.movie.recommender.movie_recommender.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +23,7 @@ public class Genre {
     private String name;
 
     @ManyToMany(mappedBy = "genres")
+    @JsonIgnoreProperties("genres") // allows me to return movies in /actors/{id}/movies
     private Set<Movie> movies;
 
     @Override

@@ -1,10 +1,12 @@
 package com.movie.recommender.movie_recommender.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -21,8 +23,10 @@ public class Actor {
     @Column(unique = true)
     private String name;
 
-    @ManyToMany(mappedBy = "topCast")
+    @ManyToMany(mappedBy = "topCast") //  tells JPA the relationship is bidirectional and the owning side is on the Movie enity
+    @JsonIgnoreProperties("topCast") // prevent circular reference
     private Set<Movie> movies;
+
 
 
     @Override

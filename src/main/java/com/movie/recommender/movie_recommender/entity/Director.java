@@ -1,5 +1,6 @@
 package com.movie.recommender.movie_recommender.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +29,7 @@ public class Director {
     private String name;
 
     @ManyToMany(mappedBy = "directors")
+    @JsonIgnoreProperties("directors") // prevents infinite recursion
     private Set<Movie> movies;
 
 

@@ -13,6 +13,6 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
     List<Movie> findTop10ByYearOrderByRatingDesc(String year);
     List<Movie>findByGenresIgnoreCaseOrderByRatingDesc(String genre);
 
-
+    List<Movie>findByDirectorIgnoreCase(String director);
 
 }

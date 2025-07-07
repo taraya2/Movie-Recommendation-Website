@@ -40,6 +40,10 @@ public class CsvMovieLoader {
 
     @EventListener(ApplicationReadyEvent.class)
     public void loadCsv() throws IOException {
+        if (movieRepo.count() > 0 ) {
+            System.out.println("Movies already exist in the database. Skipping CSV import.");
+            return;
+        }
         try {
             InputStream is = getClass().getClassLoader().getResourceAsStream("data/movies_clean.csv");
             if (is == null) {

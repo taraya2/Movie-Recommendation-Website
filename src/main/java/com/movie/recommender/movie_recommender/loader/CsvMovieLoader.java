@@ -2,9 +2,9 @@ package com.movie.recommender.movie_recommender.loader;
 
 import com.movie.recommender.movie_recommender.entity.Movie;
 import com.movie.recommender.movie_recommender.repository.MovieRepository;
-import com.movie.recommender.movie_recommender.service.ActorBatchService;
-import com.movie.recommender.movie_recommender.service.DirectorBatchService;
-import com.movie.recommender.movie_recommender.service.GenreBatchService;
+import com.movie.recommender.movie_recommender.batch_service.ActorBatchService;
+import com.movie.recommender.movie_recommender.batch_service.DirectorBatchService;
+import com.movie.recommender.movie_recommender.batch_service.GenreBatchService;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;

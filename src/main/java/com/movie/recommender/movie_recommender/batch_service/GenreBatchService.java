@@ -1,4 +1,4 @@
-package com.movie.recommender.movie_recommender.service;
+package com.movie.recommender.movie_recommender.batch_service;
 
 import com.movie.recommender.movie_recommender.entity.Genre;
 import com.movie.recommender.movie_recommender.repository.GenreRepository;

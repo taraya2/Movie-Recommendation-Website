@@ -3,6 +3,9 @@ package com.movie.recommender.movie_recommender.controller;
 import com.movie.recommender.movie_recommender.entity.Actor;
 import com.movie.recommender.movie_recommender.entity.Movie;
 import com.movie.recommender.movie_recommender.repository.ActorRepository;
+import com.movie.recommender.movie_recommender.service.ActorService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -13,29 +16,27 @@ import java.util.Optional;
 @RequestMapping("/api/actors")
 public class ActorController {
 
-    private final ActorRepository actorRepo;
+    private final ActorService actorService;
 
-    public ActorController(ActorRepository actorRepo) {
-        this.actorRepo = actorRepo;
+    public ActorController(ActorService actorService) {
+        this.actorService = actorService;
     }
 
     @GetMapping()
-    public List<Actor> getAllActors() {
-        return actorRepo.findAll();
+    public Page<Actor> getAllActors(Pageable pageable) {
+        return actorService.getAllActors(pageable);
     }
 
     // Get /api/actors/{id}
     @GetMapping("/{id}")
     public Optional<Actor> getActorById(@PathVariable Long id) {
-        return actorRepo.findById(id);
+        return actorService.getActorById(id);
     }
 
     // Get /api/actors/{id}/movies
     @GetMapping("/{id}/movies")
     public List<Movie> getMoviesByActor(@PathVariable Long id) {
-        return actorRepo.findById(id)
-                .map(actor -> new ArrayList<>(actor.getMovies()))
-                .orElseGet(ArrayList::new);
+        return actorService.getMoviesByActor(id);
     }
 
 }

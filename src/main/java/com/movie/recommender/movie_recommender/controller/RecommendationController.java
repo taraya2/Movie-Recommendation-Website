@@ -20,7 +20,4 @@ public class RecommendationController {
     public List<Movie> getRecommendations(@PathVariable String tconst, @RequestParam(defaultValue = "10") int limit) {
         return recService.recommendMovies(tconst, limit);
     }
-
-
-
 }

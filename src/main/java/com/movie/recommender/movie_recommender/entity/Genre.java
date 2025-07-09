@@ -23,7 +23,7 @@ public class Genre {
     private String name;
 
     @ManyToMany(mappedBy = "genres")
-    @JsonIgnoreProperties("genres") // allows me to return movies in /actors/{id}/movies
+    @JsonIgnore // allows me to return movies in /actors/{id}/movies
     private Set<Movie> movies;
 
     @Override

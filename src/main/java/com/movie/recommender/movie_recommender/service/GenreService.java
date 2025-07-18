@@ -1,5 +1,6 @@
 package com.movie.recommender.movie_recommender.service;
 
+import com.movie.recommender.movie_recommender.dto.GenreDTO;
 import com.movie.recommender.movie_recommender.entity.Genre;
 import com.movie.recommender.movie_recommender.entity.Movie;
 import org.springframework.data.domain.Page;
@@ -13,4 +14,6 @@ public interface GenreService {
     Page<Genre> getAllGenres(Pageable pageable);
     Optional<Genre> getGenreById(Long id);
     List<Movie> getMoviesByGenre(Long id);
+    GenreDTO getGenreDetails(Long id);
+    Page<Movie> getPagedMoviesByGenre(Long genreId, Pageable pageable);
 }

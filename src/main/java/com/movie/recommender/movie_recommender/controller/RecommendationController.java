@@ -1,8 +1,7 @@
 package com.movie.recommender.movie_recommender.controller;
 
-import com.movie.recommender.movie_recommender.entity.Movie;
+import com.movie.recommender.movie_recommender.dto.MovieDTO;
 import com.movie.recommender.movie_recommender.service.RecommendationService;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +16,8 @@ public class RecommendationController {
     }
 
     @GetMapping("/{tconst}")
-    public List<Movie> getRecommendations(@PathVariable String tconst, @RequestParam(defaultValue = "10") int limit) {
+    public List<MovieDTO> getRecommendations(@PathVariable String tconst,
+                                             @RequestParam(defaultValue = "10") int limit) {
         return recService.recommendMovies(tconst, limit);
     }
 }

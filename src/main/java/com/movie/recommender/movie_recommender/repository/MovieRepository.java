@@ -37,4 +37,7 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
     @Query("SELECT m FROM Movie m JOIN m.genres g WHERE LOWER(g.name) = LOWER(:genre) AND m.rating >= :minRating")
     Page<Movie> findMoviesByGenreIgnoreCaseAndRatingGreaterThanEqual(@Param("genre")String genre, @Param("minRating") Float minRating, Pageable pageable);
 
+    @Query("SELECT DISTINCT m FROM Movie m JOIN m.genres g WHERE LOWER(g.name) IN :genreNames")
+    List<Movie> findByGenres(@Param("genreNames") List<String> genreNames, Pageable pageable);
+
 }

@@ -1,5 +1,6 @@
 package com.movie.recommender.movie_recommender.service;
 
+import com.movie.recommender.movie_recommender.dto.ActorDTO;
 import com.movie.recommender.movie_recommender.entity.Actor;
 import com.movie.recommender.movie_recommender.entity.Movie;
 import org.springframework.data.domain.Page;
@@ -14,4 +15,5 @@ public interface ActorService {
     Page<Actor> getAllActors(Pageable pageable);
     Optional<Actor> getActorById(Long id);
     List<Movie> getMoviesByActor(Long id);
+    ActorDTO getActorDetails(Long id);
 }

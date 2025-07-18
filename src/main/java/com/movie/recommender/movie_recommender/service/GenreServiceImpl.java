@@ -1,5 +1,6 @@
 package com.movie.recommender.movie_recommender.service;
 
+import com.movie.recommender.movie_recommender.dto.GenreDTO;
 import com.movie.recommender.movie_recommender.entity.Genre;
 import com.movie.recommender.movie_recommender.entity.Movie;
 import com.movie.recommender.movie_recommender.repository.GenreRepository;
@@ -35,5 +36,19 @@ public class GenreServiceImpl implements GenreService {
         return genreRepo.findById(id)
                 .map(genre -> new ArrayList<>(genre.getMovies()))
                 .orElseGet(ArrayList::new);
+    }
+
+    @Override
+    public GenreDTO getGenreDetails(Long id) {
+        Optional<Genre> genreOptional = getGenreById(id);
+        if (genreOptional.isEmpty()) return null;
+        Genre genre = genreOptional.get();
+        List<Movie> movies = getMoviesByGenre(id);
+        return new GenreDTO(id, genre.getName(), movies);
+    }
+
+    @Override
+    public Page<Movie> getPagedMoviesByGenre(Long genreId, Pageable pageable) {
+        return genreRepo.findPagedMoviesByGenreId(genreId, pageable);
     }
 }

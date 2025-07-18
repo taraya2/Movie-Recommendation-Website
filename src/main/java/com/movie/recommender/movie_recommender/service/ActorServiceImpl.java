@@ -1,5 +1,6 @@
 package com.movie.recommender.movie_recommender.service;
 
+import com.movie.recommender.movie_recommender.dto.ActorDTO;
 import com.movie.recommender.movie_recommender.entity.Actor;
 import com.movie.recommender.movie_recommender.entity.Movie;
 import com.movie.recommender.movie_recommender.repository.ActorRepository;
@@ -34,5 +35,16 @@ public class ActorServiceImpl implements ActorService{
         return actorRepo.findById(id)
                 .map(actor -> new ArrayList<>(actor.getMovies()))
                 .orElseGet(ArrayList::new);
+    }
+
+    @Override
+    public ActorDTO getActorDetails(Long id) {
+        Optional<Actor> actorOpt = actorRepo.findById(id);
+        if (actorOpt.isEmpty()) return null;
+
+        Actor actor = actorOpt.get();
+        List<Movie> movies = getMoviesByActor(id);
+
+        return new ActorDTO(actor.getId(), actor.getName(), movies);
     }
 }

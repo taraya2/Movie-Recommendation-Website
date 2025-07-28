@@ -1,12 +1,51 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Full-Stack Movie Recommendation Platform
 
-Currently, two official plugins are available:
+Full-stack web application that enables users to explore, search, and receive recommendations for movies using a clean, scalable architecture. It integrates a custom movie dataset from IMDb, real-time poster fetching via OMDb API, and interactive filtering powered by a modern REST API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Key Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Genre-based Filtering**: Explore movies by genre and filter by year range.
+- **Movie Recommendations**: Each movie provides context-aware related movie recommendations.
+- **Search Functionality**: Search and navigate by movie title, director, actor, or genre.
+- **Movie Detail Pages**: Each movie has its own detailed view, including cast, genres, rating, and poster.
+- **Director & Actor Browsing**: View filmographies for individual directors and actors.
+- **Real-Time Posters**: Posters dynamically fetched from OMDb API based on movie title and year.
+- **Responsive Frontend**: Built with React and Axios for fast and dynamic user experience.
+- **Efficient Backend**: Spring Boot REST API with JPA, pagination, and custom query filtering.
+
+---
+
+## Technology Stack
+
+### Backend
+- Java
+- Spring Boot
+- Spring Data JPA
+- PostgreSQL
+- OMDb API (for poster retrieval)
+
+### Frontend
+- React (Vite)
+- React Router DOM
+- Axios
+- CSS Modules / Inline Styling
+
+---
+
+## Data Engineering & ETL
+
+Used official IMDb TSV datasets to build a clean and normalized movie dataset.
+
+- Parsed and joined: `title.basics.tsv`, `title.ratings.tsv`, `title.principals.tsv`, `name.basics.tsv`
+- Filtered for:
+  - Movies only
+  - Release years: 2000–2023
+  - Valid ratings, directors, and cast
+- Extracted structured columns: genres, directors, primary cast, and ratings
+- Wrote a Java-based ETL process to:
+  - Normalize and transform data into a clean CSV
+  - Load data into PostgreSQL using Spring Boot and JPA with batch inserts for performance
+>>>>>>> fe6fc305b8c0a079b448b18291deec73d6e7a6b1

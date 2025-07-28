@@ -48,4 +48,3 @@ Used official IMDb TSV datasets to build a clean and normalized movie dataset.
 - Wrote a Java-based ETL process to:
   - Normalize and transform data into a clean CSV
   - Load data into PostgreSQL using Spring Boot and JPA with batch inserts for performance
->>>>>>> fe6fc305b8c0a079b448b18291deec73d6e7a6b1

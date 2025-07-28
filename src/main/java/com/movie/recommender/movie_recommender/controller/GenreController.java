@@ -1,16 +1,15 @@
 package com.movie.recommender.movie_recommender.controller;
 
 import com.movie.recommender.movie_recommender.dto.GenreDTO;
+import com.movie.recommender.movie_recommender.dto.MovieDTO;
 import com.movie.recommender.movie_recommender.entity.Genre;
 import com.movie.recommender.movie_recommender.entity.Movie;
 import com.movie.recommender.movie_recommender.service.GenreService;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,13 +39,21 @@ public class GenreController {
     }
 
 //    @GetMapping("/{id}/movies")
-//    public List<Movie> getMoviesByGenre(@PathVariable Long id) {
-//        return genreService.getMoviesByGenre(id);
+//    public Page<Movie> getPagedMoviesByGenre( @PathVariable Long id,Pageable pageable) {
+//        return genreService.getPagedMoviesByGenre(id, pageable);
 //    }
 
     @GetMapping("/{id}/movies")
-    public Page<Movie> getPagedMoviesByGenre( @PathVariable Long id,Pageable pageable) {
-        return genreService.getPagedMoviesByGenre(id, pageable);
+    public Page<MovieDTO> getMoviesByGenre(
+            @PathVariable Long id,
+            @RequestParam(required = false) Integer minYear,
+            @RequestParam(required = false) Integer maxYear,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "12") int size
+    ) {
+        System.out.println(">>> Request received with minYear = " + minYear + ", maxYear = " + maxYear);
+        Pageable pageable = PageRequest.of(page, size);
+        return genreService.getMoviesByGenreWithYearFilter(id, minYear, maxYear, pageable);
     }
 
 

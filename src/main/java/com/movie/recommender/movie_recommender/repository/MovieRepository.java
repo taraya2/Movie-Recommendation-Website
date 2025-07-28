@@ -40,4 +40,14 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
     @Query("SELECT DISTINCT m FROM Movie m JOIN m.genres g WHERE LOWER(g.name) IN :genreNames")
     List<Movie> findByGenres(@Param("genreNames") List<String> genreNames, Pageable pageable);
 
+    @Query("SELECT m FROM Movie m JOIN m.genres g WHERE g.id = :genreId " +
+            "AND (:minYear IS NULL OR m.year >= :minYear) " +
+            "AND (:maxYear IS NULL OR m.year <= :maxYear)")
+    Page<Movie> findByGenreWithYearRange(
+            @Param("genreId") Long genreId,
+            @Param("minYear") Integer minYear,
+            @Param("maxYear") Integer maxYear,
+            Pageable pageable
+    );
+
 }

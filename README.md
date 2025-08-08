@@ -17,6 +17,9 @@ Full-stack web application that enables users to explore, search, and receive re
 - **Efficient Backend**: Spring Boot REST API with JPA, pagination, and custom query filtering.
 
 ---
+https://github.com/user-attachments/assets/ff7585f8-c861-4ec2-ad56-44182fad8306
+
+---
 
 ## Technology Stack
 

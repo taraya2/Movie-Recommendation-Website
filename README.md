@@ -18,9 +18,16 @@ Full-stack web application that enables users to explore, search, and receive re
 
 ---
 https://github.com/user-attachments/assets/ff7585f8-c861-4ec2-ad56-44182fad8306
-https://github.com/user-attachments/assets/b8bef803-da79-49fd-a7a1-92e637be7d4a
 
 ---
+
+
+
+
+https://github.com/user-attachments/assets/b8bef803-da79-49fd-a7a1-92e637be7d4a
+
+
+
 
 ## Technology Stack
 

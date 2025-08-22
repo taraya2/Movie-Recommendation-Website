@@ -33,7 +33,7 @@ const MovieDetails = () => {
     const fetchPoster = async () => {
       try {
         const response = await axios.get(
-          `https://www.omdbapi.com/?i=${tconst}&apikey=3170ca1b`
+          `https://www.omdbapi.com/?i=${tconst}&apikey=APIKEY`
         );
         if (response.data.Poster && response.data.Poster !== "N/A") {
           setPosterUrl(response.data.Poster);

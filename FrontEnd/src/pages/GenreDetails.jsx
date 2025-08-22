@@ -91,7 +91,7 @@ const GenreDetails = () => {
           if (!newPosters[movie.tconst]) {
             try {
               const res = await axios.get(
-                `https://www.omdbapi.com/?i=${movie.tconst}&apikey=3170ca1b`
+                `https://www.omdbapi.com/?i=${movie.tconst}&apikey=APIKEY`
               );
               if (res.data.Poster && res.data.Poster !== "N/A") {
                 newPosters[movie.tconst] = res.data.Poster;

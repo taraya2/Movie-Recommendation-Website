@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 
-const OMDB_API_KEY = "3170ca1b"; 
+const OMDB_API_KEY = "APIKEY"; 
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);

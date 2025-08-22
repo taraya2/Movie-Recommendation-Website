@@ -27,7 +27,7 @@ const GenreList = () => {
   return (
     <Layout>
       <div style={containerStyle}>
-        <h2 style={headingStyle}>🎞️ Genre List</h2>
+        <h2 style={headingStyle}> Genre List</h2>
 
         {loading ? (
           <p>Loading...</p>

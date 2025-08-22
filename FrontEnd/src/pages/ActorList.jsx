@@ -44,7 +44,7 @@ const ActorList = () => {
   return (
     <Layout>
       <div style={containerStyle}>
-        <h2 style={headingStyle}>🎭 Actor List</h2>
+        <h2 style={headingStyle}> Actor List</h2>
 
         {loading ? (
           <p>Loading...</p>

@@ -44,7 +44,7 @@ const DirectorList = () => {
   return (
     <Layout>
       <div style={containerStyle}>
-        <h2 style={headingStyle}>🎬 Director List</h2>
+        <h2 style={headingStyle}> Director List</h2>
 
         {loading ? (
           <p>Loading...</p>

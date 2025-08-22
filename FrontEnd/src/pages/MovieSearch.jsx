@@ -15,7 +15,7 @@ import {
   listStyle
 } from "../styles/sharedStyles";
 
-const OMDB_API_KEY = "3170ca1b";
+const OMDB_API_KEY = "APIKEY";
 
 const MovieSearch = () => {
   const [title, setTitle] = useState("");
